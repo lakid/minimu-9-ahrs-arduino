@@ -116,6 +116,10 @@ float c_magnetom_y;
 float c_magnetom_z;
 float MAG_Heading;
 
+float pressure;
+float altitude;
+ float temperature;
+
 float Accel_Vector[3]= {0,0,0}; //Store the acceleration in a vector
 float Gyro_Vector[3]= {0,0,0};//Store the gyros turn rate in a vector
 float Omega_Vector[3]= {0,0,0}; //Corrected Gyro_Vector data
@@ -169,6 +173,7 @@ void setup()
   Accel_Init();
   Compass_Init();
   Gyro_Init();
+  Altimeter_Init();
 
   delay(20);
 
@@ -220,6 +225,7 @@ void loop() //Main Loop
     // Data adquisition
     Read_Gyro();   // This read gyro data
     Read_Accel();     // Read I2C accelerometer
+    Read_Altimeter(); // Read Altimeter
 
     if (counter > 5)  // Read compass data at 10Hz... (5 loop runs)
     {

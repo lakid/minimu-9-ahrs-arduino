@@ -40,9 +40,13 @@ LIS3MDL mag;
 
 #include <L3G.h>
 #include <LSM303.h>
+#include <LPS.h>
+
 
 L3G gyro;
 LSM303 compass;
+LPS ps;
+
 
 #endif
 
@@ -156,4 +160,18 @@ void Read_Compass()
   magnetom_z = SENSOR_SIGN[8] * compass.m.z;
 #endif
 }
+
+void Altimeter_Init()
+{
+  ps.init();
+  ps.enableDefault();
+}
+
+void Read_Altimeter()
+{
+  pressure = ps.readPressureMillibars();
+  altitude = ps.pressureToAltitudeMeters(pressure);
+  temperature = ps.readTemperatureC();
+}
+
 

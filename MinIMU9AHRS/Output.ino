@@ -80,6 +80,12 @@ void printdata(void)
       Serial.print (",");
       Serial.print(DCM_Matrix[2][2]);
       #endif
+      Serial.print("ALT: ");
+      Serial.print(altitude);
+      Serial.print(", Pressure:");
+      Serial.print(pressure);
+      Serial.print(", Temp:");
+      Serial.print(temperature);
       Serial.println();
       
 }
